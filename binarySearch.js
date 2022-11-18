@@ -834,19 +834,21 @@
     const [needle] = JSON.parse(process.argv.slice(2)[0]);
     let lowPoint = 0;
     let highPoint = haystack.length;
-    let step = 1;
+    let step = 0;
 
     do {
         let middlePoint = Math.floor(lowPoint + (highPoint - lowPoint) / 2);
 
+        // Setting up comparison
         console.log(
-            `Attempt #${step}\n(Array total length is ${haystack.length}. Lowest value is ${
+            `Attempt #${++step}\n(Array total length is ${haystack.length}. Lowest value is ${
                 haystack[0]
             } and highest value is ${haystack[haystack.length - 1]})\n- Currently comparing ${
                 haystack[middlePoint]
             } to ${needle}...`
         );
 
+        // Comparison logic / algorithm at work
         if (haystack[middlePoint] === needle) {
             console.log(`😌 Match! ${needle} is at array index ${middlePoint}`);
             return;
@@ -856,21 +858,22 @@
             highPoint = middlePoint;
         }
 
+        // Comparison results
         if (lowPoint < highPoint) {
             console.log(
                 `- No match. ${haystack[middlePoint]} is ${
                     haystack[middlePoint] < needle ? "lower" : "higher"
                 } than ${needle}. Now searching between ${haystack[lowPoint]} and ${
                     haystack[highPoint] ? haystack[highPoint] : haystack[highPoint - 1]
-                }\n`
+                }.\n`
             );
         } else {
             console.log(
-                `\nNothing else to check. I really looked, but ${needle} is not in the array.`
+                `- No match. ${haystack[middlePoint]} is ${
+                    haystack[middlePoint] < needle ? "lower" : "higher"
+                } than ${needle}.\n\nNothing else to check in here. I really looked, but ${needle} is not in the array.`
             );
         }
-
-        ++step;
     } while (lowPoint < highPoint);
     return;
 
