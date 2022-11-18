@@ -23,13 +23,13 @@
     what if i told you that you can do it in, like, 25? if you were me, you'd be like "no way freakin' way," but yes, way.
 
         that's exactly what binary search does. it splits the array into half and checks if the target item is in one of the halves.
-    if it ain't, it'll look at the other half. once it finds the right half, it'll split those halves in half and repeat the process.
+    if it ain't, it'll look at the other half. once it finds the right half, it'll split that half into more halves and repeat the process.
     ...and so on and so forth until the end of time. or, rather, until everything has been looked through. 
 
         (ok but how does it KNOW what part of the array the item is in? it doesn't, but it makes a good assumption based on the order.
     if i were to look for the word "askjhdfd" in the dictionary, i'd know that it would be under the letter A 
     and that it would be somewhere between "aardvark" and "asinine" - because dictionaries are ordered. 
-    i don't KNOW that it's there (spoiler: it's not), but i at least know where to look!)
+    i don't KNOW that it's there (spoiler: it's not), but i at least know where to look! same logic applies here)
 
         let's break it down: we have a list of [1, 2, 3 ... 998, 998, 1000] and we're looking for 451.
     we'll split the array into halves to find our number:
@@ -48,17 +48,17 @@
     say "ok it should be here but i'm not finding it," and then end the function. again, this is dependent
     on the array being ordered.
 
-        now, obviously, that's tedious. i knew that 451 is in the array. i made it. i can also just use my eyes to look through.
+        now, obviously, that's tedious. i knew that 451 was in the array. i made it. i can also just use my eyes to look through.
     your computer doesn't necessarily know that though. and it doesn't have eyes (thankfully).
 
         that's why the binary search algorithm is amazing. the amount of steps that it takes for your computer to 
     check the ENTIRE array is only Log2array.length (rather than purely array.length like in linear search).
-    ~ (log2number means how many times you can divide a number in half before it's < 1.0) ~
+    ~ (log2number = how many times you can divide a number in half before it's < 1.0) ~
     in this case (finding 451 in an array of 1000 items), up to 9-10 guesses rather than up to 1000 guesses.
 
         some emphasis: finding an item in an array with a length of one quintillion (1,000,000,000,000,000,000)
     could take literally - shocker - one quintillion guesses using linear search. it might not even be there.
-    log2quintillion is 59.8 - that's right, only would take your computer up to ~60 guesses using this binary search.
+    log2quintillion is 59.8 - that's right, it'd would take your computer up to ~60 guesses using this binary search.
     (don't make an array that big)
 */
 
