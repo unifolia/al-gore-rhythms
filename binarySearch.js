@@ -850,24 +850,28 @@
         if (haystack[middlePoint] === needle) {
             console.log(`😌 Match! ${needle} is at array index ${middlePoint}`);
             return;
-        }
-
-        console.log(
-            `- No match. ${haystack[middlePoint]} is ${
-                haystack[middlePoint] < needle ? "lower" : "higher"
-            } than ${needle}. Changing search area...\n`
-        );
-
-        if (haystack[middlePoint] < needle) {
+        } else if (haystack[middlePoint] < needle) {
             lowPoint = middlePoint + 1;
         } else {
             highPoint = middlePoint;
         }
 
+        if (lowPoint < highPoint) {
+            console.log(
+                `- No match. ${haystack[middlePoint]} is ${
+                    haystack[middlePoint] < needle ? "lower" : "higher"
+                } than ${needle}. Now searching between ${haystack[lowPoint]} and ${
+                    haystack[highPoint] ? haystack[highPoint] : haystack[highPoint - 1]
+                }\n`
+            );
+        } else {
+            console.log(
+                `\nNothing else to check. I really looked, but ${needle} is not in the array.`
+            );
+        }
+
         ++step;
     } while (lowPoint < highPoint);
-
-    console.log(`I really looked, but ${needle} is not in the array.`);
     return;
 
     // pure algorithm v
