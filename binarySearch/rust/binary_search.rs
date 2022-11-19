@@ -9,11 +9,12 @@ fn main() {
 
     while high > low {
         let middle = low + (high - low) / 2;
+        let target = SOME_ARRAY[middle];
 
-        if SOME_ARRAY[middle] == needle {
+        if target == needle {
             println!("{} at index {}", needle, middle);
             return;
-        } else if SOME_ARRAY[middle] < needle {
+        } else if target < needle {
             low = middle + 1; // exclude middle as we've already looked there
         } else { // if middle > needle
             high = middle;
