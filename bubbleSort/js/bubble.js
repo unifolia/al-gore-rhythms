@@ -1,6 +1,5 @@
-const ex1 = [1, 5, 2, 8, 3, 2, 4, 1, 7, 0, 4, 7, 9];
-const ex2 = [8, 9, 8, 8, 6, 1, 7, 3, 5, 1, 4, 2, 7];
-const ex3 = [3, 11, 1, 12, 10, 7, 5, 6, 2, 8, 4, 9, 13];
+const size = 25000;
+const a = [...Array(size)].map((e) => ~~(Math.random() * size));
 
 const bubbleSort = (array) => {
     for (let i = 0; i < array.length; ++i) {
@@ -15,4 +14,7 @@ const bubbleSort = (array) => {
     return array;
 };
 
-console.log(bubbleSort(ex3));
+// speed check
+const b = performance.now();
+console.log(bubbleSort(a));
+console.log(performance.now() - b);
